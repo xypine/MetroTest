@@ -6,12 +6,14 @@
 package metro;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Elias Eskelinen <elias.eskelinen@protonmail.com>
+ * @author Elias Eskelinen (elias.eskelinen@protonmail.com)
  */
 public class frame extends javax.swing.JFrame {
 
@@ -19,7 +21,9 @@ public class frame extends javax.swing.JFrame {
      * Creates new form frame
      */
     public frame() {
+        custom();
         initComponents();
+        custom();
     }
 
     /**
@@ -245,11 +249,16 @@ public class frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setState(ICONIFIED);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+    void custom(){
         this.setBackground(Color.black);
         getContentPane().setBackground(new Color(29, 29, 29));
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenWidth = screenSize.width;
+        int screenHeight = screenSize.height;
+        setLocation(screenWidth/2-getContentPane().getWidth()/2, screenHeight/2-getContentPane().getHeight()/2);
+    }
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

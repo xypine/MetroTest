@@ -7,7 +7,7 @@ package metro;
 
 /**
  *
- * @author Elias Eskelinen <elias.eskelinen@protonmail.com>
+ * @author Elias Eskelinen (elias.eskelinen@protonmail.com)
  */
 public class Demo {
 
