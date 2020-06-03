@@ -45,6 +45,7 @@ public class LoginCheck {
                 writeFile(data, "userdata.ser");
             } catch (IOException ex) {
                 System.out.println("Couldn't write userdata!");
+                ex.printStackTrace();
             }
         }
         if(check(user, password)){
@@ -63,7 +64,8 @@ public class LoginCheck {
                 users = (HashMap<String, String>) readFile("users.ser");
                 data = (HashMap<String, String>) readFile("userdata.ser");
             } catch (IOException | ClassNotFoundException ex) {
-                System.out.println("Couldn't load data files!");
+                System.out.println("Couldn't load data files: ");
+                ex.printStackTrace();
             }
         }
         if(check(user, password)){
@@ -86,7 +88,7 @@ public class LoginCheck {
     
     protected static Object readFile(String name) throws FileNotFoundException, IOException, ClassNotFoundException{
         Object e = null;
-        FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
+        FileInputStream fileIn = new FileInputStream(name);
         ObjectInputStream in = new ObjectInputStream(fileIn);
         e = in.readObject();
         in.close();

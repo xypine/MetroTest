@@ -286,7 +286,7 @@ public class Notes extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        String notes = LoginCheck.readData(username, password);
+        String notes = LoginCheck.readData(username, password, true);
         jTextArea1.setText(notes);
         //System.out.println("Can't continue");
 /*        String name = jTextField1.getText();
@@ -301,7 +301,7 @@ public class Notes extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         String notes = jTextArea1.getText();
-        LoginCheck.writeData(username, password, notes);
+        LoginCheck.writeData(username, password, notes, true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
