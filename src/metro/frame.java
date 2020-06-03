@@ -289,6 +289,8 @@ public class frame extends javax.swing.JFrame {
         //System.out.println("Username: " + name);
         //System.out.println("Password: " + pass);
         System.out.println("Valid: " + LoginCheck.check(name, pass));
+        String notes = LoginCheck.readData(name, pass);
+        System.out.println(notes);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
