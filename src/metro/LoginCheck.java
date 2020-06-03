@@ -13,6 +13,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Base64;
+import java.util.LinkedList;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -32,6 +34,13 @@ public class LoginCheck {
         //data.put(key, value);
         writeData("Admin", "Hunter2", "Hello World!", false);
         //data.put("Hunter2".hashCode() + "", "Hello World!");
+    }
+    
+    protected static Set<String> getUsers(String user, String password){
+        if(check(user, password)){
+            return users.keySet();
+        }
+        return null;
     }
     
     protected static void writeData(String user, String password, String nData){
