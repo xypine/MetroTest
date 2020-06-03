@@ -40,9 +40,10 @@ public class LoginCheck {
         System.out.println(check("Admin", "Hunter1"));      //false
         System.out.println(check("Admin1", "Hunter2"));     //false
         System.out.println(check("Admin", "hunter2"));     //false
-        String enc = encrypt("Hello!", "21");
-        System.out.println(enc);
-        System.out.println(decrypt(enc, "21"));
+        String key = salt("Admin", "Hunter2");
+        String enc = encrypt("Hello World! Hello You!", key);
+        //System.out.print(enc + " --> ");
+        System.out.println(decrypt(enc, key));
     }
     
     protected static String salt(String user, String pass){
@@ -50,25 +51,18 @@ public class LoginCheck {
     }
     
     protected static String encrypt(String inp, String key){
-        byte[] encodedBytes = Base64.getEncoder().encode(inp.getBytes());
-        byte[] two = new byte[encodedBytes.length];
-        int ind = 0;
-        for(byte i : encodedBytes){
-            two[ind] = i;
-            ind++;
+        String out = "";
+        for(char i : inp.toCharArray()){
+            out = out + (char) ( (int) (i) * (Integer.valueOf(key)%200) );
         }
-        return new String(two);
+        return out;
     }
     
     protected static String decrypt(String inp, String key){
-        byte[] oregano = inp.getBytes();
-        byte[] two = new byte[oregano.length];
-        int ind = 0;
-        for(byte i : oregano){
-            two[ind] = i;
-            ind++;
+        String out = "";
+        for(char i : inp.toCharArray()){
+            out = out + (char) ( (int) (i) / (Integer.valueOf(key)%200) );
         }
-        byte[] decodedBytes = Base64.getDecoder().decode(new String(two));
-        return new String(decodedBytes);
+        return out;
     }
 }
