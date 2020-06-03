@@ -22,19 +22,19 @@ public class Notes extends javax.swing.JFrame {
 
     private String username;
     private String password;
-    private frame parent;
-    public Notes(String username, String password, frame parent){
+    private Login parent;
+    public Notes(String username, String password, Login parent){
         create(username, password, parent);
     }
     
     /**
-     * Creates new form frame
+     * Creates new form Login
      */
     public Notes() {
         create("", "", null);
     }
     
-    private void create(String username, String password, frame parent){
+    private void create(String username, String password, Login parent){
         this.username = username;
         this.password = password;
         this.parent = parent;
@@ -326,8 +326,10 @@ public class Notes extends javax.swing.JFrame {
         if(parent == null){
             System.exit(0);
         }
+        parent.clearPassword();
         parent.setLocation(this.getLocation());
         parent.setVisible(true);
+        parent.clearPassword();
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed

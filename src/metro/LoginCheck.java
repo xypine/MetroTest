@@ -43,6 +43,18 @@ public class LoginCheck {
         return null;
     }
     
+    protected static void addUser(String user, String password, String newUser, String newPassword){
+        if(check(user, password)){
+            users.put(newUser.toLowerCase(), salt(newUser, newPassword));
+        }
+    }
+    
+    protected static void removeUser(String user, String password, String removedUser){
+        if(check(user, password)){
+            users.remove(removedUser);
+        }
+    }
+    
     protected static void writeData(String user, String password, String nData){
         writeData(user, password, nData, true);
     }
