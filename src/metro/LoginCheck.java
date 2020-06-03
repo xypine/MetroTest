@@ -5,8 +5,16 @@
  */
 package metro;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Elias Eskelinen <elias.eskelinen@protonmail.com>
@@ -27,6 +35,18 @@ public class LoginCheck {
     }
     
     protected static void writeData(String user, String password, String nData){
+        writeData(user, password, nData, true);
+    }
+    
+    protected static void writeData(String user, String password, String nData, boolean save){
+        if(save){
+            try {
+                writeFile(users, "users.ser");
+                writeFile(data, "userdata.ser");
+            } catch (IOException ex) {
+                System.out.println("Couldn't write userdata!");
+            }
+        }
         if(check(user, password)){
             String en = encrypt(nData, salt(user, password));
             data.put(password.hashCode() + "", en);
@@ -34,6 +54,18 @@ public class LoginCheck {
     }
     
     protected static String readData(String user, String password){
+        return readData(user, password, true);
+    }
+    
+    protected static String readData(String user, String password, boolean loadFromFile){
+        if(loadFromFile){
+            try {
+                users = (HashMap<String, String>) readFile("users.ser");
+                data = (HashMap<String, String>) readFile("userdata.ser");
+            } catch (IOException | ClassNotFoundException ex) {
+                System.out.println("Couldn't load data files!");
+            }
+        }
         if(check(user, password)){
             String oregano = data.get(password.hashCode() + "");
             String de = decrypt(oregano, salt(user, password));
@@ -41,6 +73,25 @@ public class LoginCheck {
             //return data.get(salt(user, password));
         }
         return null;
+    }
+    
+    protected static void writeFile(Object o, String name) throws FileNotFoundException, IOException{
+        FileOutputStream fileOut =
+        new FileOutputStream(name);
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(o);
+        out.close();
+        fileOut.close();
+    }
+    
+    protected static Object readFile(String name) throws FileNotFoundException, IOException, ClassNotFoundException{
+        Object e = null;
+        FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        e = in.readObject();
+        in.close();
+        fileIn.close();
+        return e;
     }
     
     protected static boolean check(String user, String password){

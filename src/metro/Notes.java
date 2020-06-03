@@ -35,6 +35,7 @@ public class Notes extends javax.swing.JFrame {
     private void create(String username, String password, frame parent){
         this.username = username;
         this.password = password;
+        this.parent = parent;
         custom();
         initComponents();
         custom();
