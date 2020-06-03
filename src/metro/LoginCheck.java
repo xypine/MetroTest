@@ -30,7 +30,7 @@ public class LoginCheck {
         String en = "劭撛抝熎撛玌犍";    //encrypt("Secrets", "7613055");
         data.put("1802619435", en);
         //data.put(key, value);
-        writeData("Admin", "Hunter2", "Hello World!");
+        writeData("Admin", "Hunter2", "Hello World!", false);
         //data.put("Hunter2".hashCode() + "", "Hello World!");
     }
     
@@ -42,15 +42,15 @@ public class LoginCheck {
         if(check(user, password)){
             String en = encrypt(nData, salt(user, password));
             data.put(password.hashCode() + "", en);
-        }
-        if(save){
-            try {
-                writeFile(users, "users.ser");
-                writeFile(data, "userdata.ser");
-                System.out.println("Wrote userdata succesfully!");
-            } catch (IOException ex) {
-                System.out.println("Couldn't write userdata!");
-                ex.printStackTrace();
+            if(save){
+                try {
+                    writeFile(users, "users.ser");
+                    writeFile(data, "userdata.ser");
+                    System.out.println("Wrote userdata succesfully!");
+                } catch (IOException ex) {
+                    System.out.println("Couldn't write userdata!");
+                    ex.printStackTrace();
+                }
             }
         }
     }
