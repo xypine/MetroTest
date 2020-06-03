@@ -39,18 +39,19 @@ public class LoginCheck {
     }
     
     protected static void writeData(String user, String password, String nData, boolean save){
+        if(check(user, password)){
+            String en = encrypt(nData, salt(user, password));
+            data.put(password.hashCode() + "", en);
+        }
         if(save){
             try {
                 writeFile(users, "users.ser");
                 writeFile(data, "userdata.ser");
+                System.out.println("Wrote userdata succesfully!");
             } catch (IOException ex) {
                 System.out.println("Couldn't write userdata!");
                 ex.printStackTrace();
             }
-        }
-        if(check(user, password)){
-            String en = encrypt(nData, salt(user, password));
-            data.put(password.hashCode() + "", en);
         }
     }
     
@@ -63,6 +64,7 @@ public class LoginCheck {
             try {
                 users = (HashMap<String, String>) readFile("users.ser");
                 data = (HashMap<String, String>) readFile("userdata.ser");
+                System.out.println("Read userdata succesfully!");
             } catch (IOException | ClassNotFoundException ex) {
                 System.out.println("Couldn't load data files: ");
                 ex.printStackTrace();
