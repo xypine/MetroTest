@@ -288,9 +288,16 @@ public class frame extends javax.swing.JFrame {
         String pass = String.copyValueOf(jPasswordField1.getPassword());
         //System.out.println("Username: " + name);
         //System.out.println("Password: " + pass);
-        System.out.println("Valid: " + LoginCheck.check(name, pass));
-        String notes = LoginCheck.readData(name, pass);
-        System.out.println(notes);
+        boolean valid = LoginCheck.check(name, pass);
+        System.out.println("Valid: " + valid);
+        if (valid) {
+            String notes = LoginCheck.readData(name, pass);
+            System.out.println("Notes: " + notes);
+            Notes notes1 = new Notes(name, pass, this);
+            notes1.setLocation(this.getLocation());
+            setVisible(false);
+            notes1.setVisible(true);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

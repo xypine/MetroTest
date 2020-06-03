@@ -20,18 +20,19 @@ public class Notes extends javax.swing.JFrame {
 
     private String username;
     private String password;
-    public Notes(String username, String password){
-        create(username, password);
+    private frame parent;
+    public Notes(String username, String password, frame parent){
+        create(username, password, parent);
     }
     
     /**
      * Creates new form frame
      */
     public Notes() {
-        create("", "");
+        create("", "", null);
     }
     
-    private void create(String username, String password){
+    private void create(String username, String password, frame parent){
         this.username = username;
         this.password = password;
         custom();
@@ -300,6 +301,12 @@ public class Notes extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        if(parent == null){
+            System.exit(0);
+        }
+        parent.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
