@@ -35,6 +35,8 @@ public class Settings extends javax.swing.JFrame {
     
     protected void returnState(String user, String pass, String newuser, String newpass, boolean add){
         if (add) {
+            System.out.println("Current user: " + user);
+            System.out.println("New user: " + newuser);
             LoginCheck.addUser(user, pass, newuser, newpass);
         }
         custom();

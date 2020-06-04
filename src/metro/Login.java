@@ -297,8 +297,12 @@ public class Login extends javax.swing.JFrame {
         boolean valid = LoginCheck.check(name, pass);
         System.out.println("Valid: " + valid);
         if (valid) {
-            String notes = LoginCheck.readData(name, pass);
-            System.out.println("Notes: " + notes);
+            String key = LoginCheck.salt(name, pass);
+            String enc = LoginCheck.encrypt("Test", key);
+            System.out.println("Key: " + key);
+            System.out.println("Test -> " + enc + " -> " + LoginCheck.decrypt(enc, key));
+            //String notes = LoginCheck.readData(name, pass);
+            //System.out.println("Notes: " + notes);
             Notes notes1 = new Notes(name, pass, this);
             notes1.setLocation(this.getLocation());
             setVisible(false);

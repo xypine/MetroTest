@@ -27,6 +27,7 @@ public class LoginCheck {
     
     static{
         users.put("Admin".toLowerCase(), salt("Admin".toLowerCase(), "Hunter2"));
+        readChanges("admin", "Hunter2");
         //users.put("elias", "7613055"); //1802619435
         
         //String en = "劭撛抝熎撛玌犍";    //encrypt("Secrets", "7613055");
@@ -87,6 +88,19 @@ public class LoginCheck {
                 System.out.println("Wrote userdata succesfully!");
             } catch (IOException ex) {
                 System.out.println("Couldn't write userdata!");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
+    protected static void readChanges(String user, String password){
+        if (check(user, password)) {
+            try {
+                users = (HashMap<String, String>) readFile("users.ser");
+                data = (HashMap<String, String>) readFile("userdata.ser");
+                System.out.println("Read userdata succesfully!");
+            } catch (IOException | ClassNotFoundException ex) {
+                System.out.println("Couldn't load data files: ");
                 ex.printStackTrace();
             }
         }
@@ -185,13 +199,13 @@ public class LoginCheck {
     }
     
     protected static String salt(String user, String password){
-        return (user.toLowerCase() + password).hashCode() + "";
+        return Math.abs((user.toLowerCase() + password).hashCode()) + "";
     }
     
     protected static String encrypt(String inp, String key){
         String out = "";
         for(char i : inp.toCharArray()){
-            out = out + (char) ( (int) (i) * (Integer.valueOf(key)%400) );
+            out = out + (char) ( (int) (i) * (Integer.valueOf(key)%500) );
         }
         return out;
     }
@@ -199,7 +213,7 @@ public class LoginCheck {
     protected static String decrypt(String inp, String key){
         String out = "";
         for(char i : inp.toCharArray()){
-            out = out + (char) ( (int) (i) / (Integer.valueOf(key)%400) );
+            out = out + (char) ( (int) (i) / (Integer.valueOf(key)%500) );
         }
         return out;
     }

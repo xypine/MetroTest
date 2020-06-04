@@ -150,7 +150,7 @@ public class Notes extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
-        jTextArea1.setText("Type Stuff Here...");
+        jTextArea1.setText("You can load your existing data by clicking \"load\".");
         jTextArea1.setToolTipText("Type Stuff Here...");
         jScrollPane1.setViewportView(jTextArea1);
 

@@ -263,7 +263,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Type Stuff Here..."/>
+            <Property name="text" type="java.lang.String" value="You can load your existing data by clicking &quot;load&quot;."/>
             <Property name="toolTipText" type="java.lang.String" value="Type Stuff Here..."/>
           </Properties>
         </Component>
