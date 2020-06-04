@@ -88,6 +88,7 @@ public class Notes extends javax.swing.JFrame {
         jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(109, 135, 100)));
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.setFocusable(false);
         jButton2.setPreferredSize(new java.awt.Dimension(28, 28));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +103,7 @@ public class Notes extends javax.swing.JFrame {
         jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 5, 2, 5, new java.awt.Color(229, 20, 0)));
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -135,7 +137,7 @@ public class Notes extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton4.setForeground(new java.awt.Color(238, 238, 238));
         jButton4.setText("Load");
-        jButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 2, 3, 2, new java.awt.Color(0, 138, 0)));
+        jButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 138, 0)));
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +158,7 @@ public class Notes extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton5.setForeground(new java.awt.Color(238, 238, 238));
         jButton5.setText("Save");
-        jButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 2, 3, 2, new java.awt.Color(0, 138, 0)));
+        jButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 138, 0)));
         jButton5.setContentAreaFilled(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +173,7 @@ public class Notes extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton6.setForeground(new java.awt.Color(238, 238, 238));
         jButton6.setText("Sign Out");
-        jButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 2, 3, 2, new java.awt.Color(0, 138, 0)));
+        jButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(240, 163, 10)));
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +186,9 @@ public class Notes extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(230, 230, 230));
         jLabel2.setText("Logged In as: ");
 
-        jButton3.setText("S");
+        jButton3.setBackground(new java.awt.Color(29, 29, 29));
+        jButton3.setForeground(new java.awt.Color(29, 29, 29));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/metro/icons/gear.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -229,7 +233,7 @@ public class Notes extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(36, 36, 36))
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -282,7 +286,7 @@ public class Notes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     void custom(){
         try {
-            jLabel2.setText("Logged In As " + username);
+            jLabel2.setText("Logged In as " + username);
         } catch (Exception e) {
         }
         this.setBackground(Color.black);

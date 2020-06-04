@@ -26,7 +26,7 @@ public class LoginCheck {
     private static HashMap<String, String> data = new HashMap<>();
     
     static{
-        users.put("Admin".toLowerCase(), salt("Admin", "Hunter2"));
+        users.put("Admin".toLowerCase(), salt("Admin".toLowerCase(), "Hunter2"));
         users.put("elias", "7613055"); //1802619435
         
         String en = "劭撛抝熎撛玌犍";    //encrypt("Secrets", "7613055");
@@ -45,7 +45,10 @@ public class LoginCheck {
     
     protected static void addUser(String user, String password, String newUser, String newPassword){
         if(check(user, password)){
-            users.put(newUser.toLowerCase(), salt(newUser, newPassword));
+            users.put(newUser.toLowerCase(), salt(newUser.toLowerCase(), newPassword));
+            writeChanges(user, password);
+            writeData(newUser, newPassword, "Welcome to your notes, " + newUser + "!", false);
+            writeChanges(user, password);
         }
     }
     
@@ -72,6 +75,19 @@ public class LoginCheck {
                     System.out.println("Couldn't write userdata!");
                     ex.printStackTrace();
                 }
+            }
+        }
+    }
+    
+    protected static void writeChanges(String user, String password){
+        if (check(user, password)) {
+            try {
+                writeFile(users, "users.ser");
+                writeFile(data, "userdata.ser");
+                System.out.println("Wrote userdata succesfully!");
+            } catch (IOException ex) {
+                System.out.println("Couldn't write userdata!");
+                ex.printStackTrace();
             }
         }
     }
@@ -119,6 +135,13 @@ public class LoginCheck {
         return e;
     }
     
+    static boolean verbose = true;
+    protected static void report(String r){
+        if(verbose){
+            System.out.println(r);
+        }
+    }
+    
     protected static boolean check(String user, String password){
         String user_l = user.toLowerCase();
         try {
@@ -126,12 +149,18 @@ public class LoginCheck {
                 if(users.get(user_l).equals(salt(user_l, password))){
                     return true;
                 }
+                else{
+                    report("Password Mismatch");
+                }
             }
             else{
+                report("User Mismatch / No Password Set");
                 return false;
             }
         } catch (Exception e) {
+            report("Error: " + e);
         }
+        report("No Conditions Met");
         return false;
     }
     
@@ -142,7 +171,9 @@ public class LoginCheck {
         System.out.println(check("Admin1", "Hunter2"));     //false
         System.out.println(check("Admin", "hunter2"));     //false
         String key = salt("Admin", "Hunter2");
+        String key2 = salt("admin", "Hunter2");
         System.out.println("Key: " + key);
+        System.out.println("Alt-Key: " + key2);
         String enc = encrypt("THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'S BACK 1234567890!", key);
         System.out.println(enc);
         //System.out.print(enc + " --> ");
@@ -157,7 +188,7 @@ public class LoginCheck {
     protected static String encrypt(String inp, String key){
         String out = "";
         for(char i : inp.toCharArray()){
-            out = out + (char) ( (int) (i) * (Integer.valueOf(key)%600) );
+            out = out + (char) ( (int) (i) * (Integer.valueOf(key)%400) );
         }
         return out;
     }
@@ -165,7 +196,7 @@ public class LoginCheck {
     protected static String decrypt(String inp, String key){
         String out = "";
         for(char i : inp.toCharArray()){
-            out = out + (char) ( (int) (i) / (Integer.valueOf(key)%600) );
+            out = out + (char) ( (int) (i) / (Integer.valueOf(key)%400) );
         }
         return out;
     }

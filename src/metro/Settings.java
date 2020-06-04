@@ -105,6 +105,7 @@ public class Settings extends javax.swing.JFrame {
         jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(109, 135, 100)));
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.setFocusable(false);
         jButton2.setPreferredSize(new java.awt.Dimension(28, 28));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +120,7 @@ public class Settings extends javax.swing.JFrame {
         jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 5, 2, 5, new java.awt.Color(229, 20, 0)));
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -152,7 +154,7 @@ public class Settings extends javax.swing.JFrame {
         addButton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         addButton.setForeground(new java.awt.Color(238, 238, 238));
         addButton.setText("Add");
-        addButton.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 2, 3, 2, new java.awt.Color(0, 138, 0)));
+        addButton.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 138, 0)));
         addButton.setContentAreaFilled(false);
         addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +167,7 @@ public class Settings extends javax.swing.JFrame {
         removeButton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         removeButton.setForeground(new java.awt.Color(238, 238, 238));
         removeButton.setText("Remove");
-        removeButton.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 2, 3, 2, new java.awt.Color(0, 138, 0)));
+        removeButton.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(206, 53, 44)));
         removeButton.setContentAreaFilled(false);
         removeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         removeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +182,7 @@ public class Settings extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton6.setForeground(new java.awt.Color(238, 238, 238));
         jButton6.setText("Back");
-        jButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 2, 3, 2, new java.awt.Color(0, 138, 0)));
+        jButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 138, 0)));
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -335,7 +337,7 @@ public class Settings extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     void custom(){
         try {
-            jLabel2.setText("Logged In As " + username);
+            jLabel2.setText("Logged In as " + username);
         } catch (Exception e) {
         }
         Set<String> users = LoginCheck.getUsers(username, password);
@@ -379,12 +381,15 @@ public class Settings extends javax.swing.JFrame {
         int ind = jList2.getSelectedIndex();
         System.out.println(ind);
         returnState(username, password, jTextField1.getText(), new String(jPasswordField1.getPassword()), true);
+        LoginCheck.writeChanges(username, password);
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         int ind = jList2.getSelectedIndex();
         System.out.println(ind);
         LoginCheck.removeUser(username, password, (String) (LoginCheck.getUsers(username, password).toArray()[ind]));
+        LoginCheck.writeChanges(username, password);
+        custom();
         
     }//GEN-LAST:event_removeButtonActionPerformed
 

@@ -158,6 +158,7 @@
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[28, 28]"/>
         </Property>
@@ -187,6 +188,7 @@
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -243,7 +245,7 @@
         <Property name="text" type="java.lang.String" value="Add"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder bottom="3" left="2" right="2" top="3">
+            <MatteColorBorder bottom="3" left="3" right="3" top="3">
               <Color PropertyName="color" blue="0" green="8a" red="0" type="rgb"/>
             </MatteColorBorder>
           </Border>
@@ -271,8 +273,8 @@
         <Property name="text" type="java.lang.String" value="Remove"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder bottom="3" left="2" right="2" top="3">
-              <Color PropertyName="color" blue="0" green="8a" red="0" type="rgb"/>
+            <MatteColorBorder bottom="3" left="3" right="3" top="3">
+              <Color PropertyName="color" blue="2c" green="35" red="ce" type="rgb"/>
             </MatteColorBorder>
           </Border>
         </Property>
@@ -306,7 +308,7 @@
         <Property name="text" type="java.lang.String" value="Back"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder bottom="3" left="2" right="2" top="3">
+            <MatteColorBorder bottom="3" left="3" right="3" top="3">
               <Color PropertyName="color" blue="0" green="8a" red="0" type="rgb"/>
             </MatteColorBorder>
           </Border>
