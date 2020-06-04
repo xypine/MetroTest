@@ -27,12 +27,12 @@ public class LoginCheck {
     
     static{
         users.put("Admin".toLowerCase(), salt("Admin".toLowerCase(), "Hunter2"));
-        users.put("elias", "7613055"); //1802619435
+        //users.put("elias", "7613055"); //1802619435
         
-        String en = "劭撛抝熎撛玌犍";    //encrypt("Secrets", "7613055");
-        data.put("1802619435", en);
+        //String en = "劭撛抝熎撛玌犍";    //encrypt("Secrets", "7613055");
+        //data.put("1802619435", en);
         //data.put(key, value);
-        writeData("Admin", "Hunter2", "Hello World!", false);
+        //writeData("Admin", "Hunter2", "Hello World!", false);
         //data.put("Hunter2".hashCode() + "", "Hello World!");
     }
     
@@ -65,7 +65,7 @@ public class LoginCheck {
     protected static void writeData(String user, String password, String nData, boolean save){
         if(check(user, password)){
             String en = encrypt(nData, salt(user, password));
-            data.put(password.hashCode() + "", en);
+            data.put(user.hashCode() + "", en);
             if(save){
                 try {
                     writeFile(users, "users.ser");
@@ -108,7 +108,10 @@ public class LoginCheck {
             }
         }
         if(check(user, password)){
-            String oregano = data.get(password.hashCode() + "");
+            String oregano = data.get(user.hashCode() + "");
+            if(oregano == null){
+                return "[Data index empty]";
+            }
             String de = decrypt(oregano, salt(user, password));
             return de;
             //return data.get(salt(user, password));
