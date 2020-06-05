@@ -10,7 +10,7 @@ Password: Hunter2
 
 Deleting the users.ser file restores the user above. (deletes all data and users too :D)
 
-How to remove the default user?
+# How to remove the default user?
 1. Login with it.
 
 2. Head in to the settings and add a new user
